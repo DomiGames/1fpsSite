@@ -21,6 +21,7 @@
             background: #0b0d10;
             color: #eaeef2;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         a {
@@ -192,7 +193,10 @@
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
             margin-bottom: 18px;
+            cursor: grab;
+            position: relative;
         }
+        .game-gallery:active { cursor: grabbing; }
 
         .game-gallery::-webkit-scrollbar {
             height: 6px;
@@ -215,12 +219,34 @@
             border-radius: 14px;
             object-fit: cover;
             scroll-snap-align: start;
-            transition: transform 0.2s ease;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
             border: 1px solid #2a2f38;
+            cursor: pointer;
         }
 
-        .game-gallery img:hover {
-            transform: scale(1.04);
+        /* ----- HOVER BIG PREVIEW (tooltip) ----- */
+        .hover-preview {
+            display: none;
+            position: fixed;
+            pointer-events: none;
+            z-index: 9998;
+            border-radius: 16px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.9);
+            border: 2px solid #facc15;
+            max-width: 60vw;
+            max-height: 70vh;
+            object-fit: contain;
+            background: #0b0d10;
+            padding: 4px;
+            transform: translate(-50%, -50%) scale(0.95);
+            transition: transform 0.15s ease, opacity 0.15s ease;
+            opacity: 0;
+        }
+
+        .hover-preview.visible {
+            display: block;
+            opacity: 1;
+            transform: translate(-50%, -50%) scale(1);
         }
 
         /* store links */
@@ -292,6 +318,63 @@
             text-decoration: none;
         }
 
+        /* ---- LIGHTBOX ---- */
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(6px);
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            padding: 30px;
+            animation: fadeIn 0.25s ease;
+        }
+        .lightbox-overlay.active {
+            display: flex;
+        }
+
+        .lightbox-overlay img {
+            max-width: 90vw;
+            max-height: 90vh;
+            border-radius: 20px;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.8);
+            object-fit: contain;
+            animation: zoomIn 0.3s cubic-bezier(0.2, 0, 0, 1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 30px;
+            right: 40px;
+            font-size: 3rem;
+            color: #fff;
+            cursor: pointer;
+            transition: transform 0.2s;
+            background: none;
+            border: none;
+            line-height: 1;
+            font-weight: 300;
+            opacity: 0.7;
+        }
+        .lightbox-close:hover {
+            transform: rotate(90deg);
+            opacity: 1;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes zoomIn {
+            from { transform: scale(0.85); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
         @media (max-width: 640px) {
             .hero h1 {
                 font-size: 2.8rem;
@@ -308,6 +391,14 @@
             .game-gallery img {
                 width: 110px;
                 height: 74px;
+            }
+            .lightbox-overlay img {
+                max-width: 95vw;
+                max-height: 80vh;
+            }
+            .hover-preview {
+                max-width: 80vw;
+                max-height: 50vh;
             }
         }
     </style>
@@ -346,7 +437,6 @@
                         Play as a burger mercenary and fight off waves of evil hotdogs, ninja pizza slices, and exploding donuts. Shoot, dash, collect power-ups, and reclaim the restaurant in this chaotic pixel-art brawler.
                     </p>
 
-                    <!-- GALLERY: replace src with your own images -->
                     <div class="game-gallery">
                         <img src="https://play-lh.googleusercontent.com/sE0UJAMuiENo0U4VsJIFgFgNDq8zUzVj5loF8V1zToACH_VHuvGX9KH2VzwXmLGCQTAPgLp0yP_f92757Vk2bw=w2560-h1440-rw" alt="Fast Food Wars 1" />
                         <img src="https://play-lh.googleusercontent.com/_iHJIjIrjtfEhPn2KGOLKWU6pXfT9Y1OkTu14nZn2ZuKVRwJz_AbvB-GreAhlXxLtuZfOUn6UlhdSwbKP7H2=w2560-h1440-rw" alt="Fast Food Wars 2" />
@@ -371,12 +461,11 @@
                         A minimalist platformer where you jump, dodge, and climb higher to unravel the mystery of a strange world. Simple controls, tricky obstacles, and a vibe that pulls you in.
                     </p>
 
-                    <!-- GALLERY: replace src with your own images -->
                     <div class="game-gallery">
-                        <img src="https://picsum.photos/seed/bb1/400/250" alt="Black Ballz 1" />
-                        <img src="https://picsum.photos/seed/bb2/400/250" alt="Black Ballz 2" />
-                        <img src="https://picsum.photos/seed/bb3/400/250" alt="Black Ballz 3" />
-                        <img src="https://picsum.photos/seed/bb4/400/250" alt="Black Ballz 4" />
+                        <img src="https://play-lh.googleusercontent.com/OyClKWVtyPOiO0hYVfM76dNzbMozua8fFEUPiEg4Z4ZxYgqRnT93haM8tOFcZLT7q6cBgE1XhkwMc5qQPL3uqA=w526-h296-rw" alt="Black Ballz 1" />
+                        <img src="https://play-lh.googleusercontent.com/lFc4f-xydNNICZJhSH2kZSEEl821LP0b1F5_9XeNze1vfHYQj4tlTbBzp5A4XVw_d97s4ehnZUJDlf5fetm8AQ=w526-h296-rw" alt="Black Ballz 2" />
+                        <img src="https://play-lh.googleusercontent.com/QP9L7s_VzWaVBdxAHklePJasHX6oSVU-AXl0LgVOF_2V_WOPk0MUlA8xfrs9g4e0HBfuQ-sikEfa4BJWZBFZ=w2560-h1440-rw" alt="Black Ballz 3" />
+                        <img src="https://play-lh.googleusercontent.com/ZsvpkglGdHUY4xej0wB7twHHoUWukZtod-kkZc6a5kdbbt3-DBJG6gPtNkKhbQz40sw1h8cOF_fnnKPZdR6Pyic=w2560-h1440-rw" alt="Black Ballz 4" />
                     </div>
 
                     <div class="store-links">
@@ -400,5 +489,81 @@
         </div>
     </footer>
 
+    <!-- Hover preview image (floating) -->
+    <img class="hover-preview" id="hoverPreview" src="" alt="preview" />
+
+    <!-- Lightbox overlay -->
+    <div class="lightbox-overlay" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <img id="lightboxImg" src="" alt="Enlarged screenshot" />
+    </div>
+
+    <script>
+        // ----- HOVER ZOOM PREVIEW -----
+        const preview = document.getElementById('hoverPreview');
+        let hoverTimeout;
+
+        document.querySelectorAll('.game-gallery img').forEach(img => {
+            img.addEventListener('mouseenter', function(e) {
+                // ---- FIX: Reset the inline display style so the CSS class can show it ----
+                preview.style.display = '';
+                
+                preview.src = this.src;
+                preview.alt = this.alt || 'Game preview';
+                clearTimeout(hoverTimeout);
+                hoverTimeout = setTimeout(() => {
+                    preview.classList.add('visible');
+                }, 50);
+            });
+
+            img.addEventListener('mousemove', function(e) {
+                preview.style.left = e.clientX + 'px';
+                preview.style.top = e.clientY + 'px';
+            });
+
+            img.addEventListener('mouseleave', function() {
+                clearTimeout(hoverTimeout);
+                preview.classList.remove('visible');
+                // Hide it after a tiny delay to prevent flicker
+                setTimeout(() => {
+                    if (!preview.classList.contains('visible')) {
+                        preview.style.display = 'none';
+                    }
+                }, 100);
+            });
+        });
+
+        // ----- LIGHTBOX (click) -----
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+        const closeBtn = document.getElementById('lightboxClose');
+
+        document.querySelectorAll('.game-gallery img').forEach(img => {
+            img.addEventListener('click', function(e) {
+                e.stopPropagation();
+                lightboxImg.src = this.src;
+                lightboxImg.alt = this.alt || 'Game screenshot';
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+                // hide hover preview while lightbox is open
+                preview.classList.remove('visible');
+            });
+        });
+
+        function closeLightbox() {
+            lightbox.classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        closeBtn.addEventListener('click', closeLightbox);
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) closeLightbox();
+        });
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape' && lightbox.classList.contains('active')) {
+                closeLightbox();
+            }
+        });
+    </script>
 </body>
 </html>
