@@ -180,7 +180,7 @@
 
         .game-card p {
             color: #9ca3af;
-            margin: 14px 0 18px;
+            margin: 14px 0 20px; /* Adjusted spacing */
             flex: 1;
         }
 
@@ -192,7 +192,7 @@
             padding: 4px 0 12px 0;
             scroll-snap-type: x mandatory;
             -webkit-overflow-scrolling: touch;
-            margin-bottom: 18px;
+            margin-bottom: 22px; /* Adjusted spacing */
             cursor: grab;
             position: relative;
         }
@@ -254,7 +254,7 @@
             display: flex;
             flex-wrap: wrap;
             gap: 12px;
-            margin-top: 4px;
+            margin-top: 6px; /* Adjusted spacing */
         }
 
         .game-card .store-links .btn {
@@ -266,20 +266,6 @@
 
         .game-card .btn-outline {
             border-color: #374151;
-        }
-
-        .steam-spotlight {
-            margin-top: 14px;
-            padding: 14px 18px;
-            background: #1a1f26;
-            border-radius: 16px;
-            border-left: 4px solid #facc15;
-            font-size: 0.9rem;
-            color: #d1d5db;
-        }
-
-        .steam-spotlight strong {
-            color: #eaeef2;
         }
 
         /* FOOTER */
@@ -448,9 +434,6 @@
                         <a href="https://store.steampowered.com/app/4211490/Fast_Food_Wars/" target="_blank" class="btn btn-primary">Steam</a>
                         <a href="https://play.google.com/store/apps/details?id=org.beast_burger_food_wars" target="_blank" class="btn btn-outline">Google Play</a>
                     </div>
-                    <div class="steam-spotlight">
-                        <strong>⚡ Steam</strong> — bullet-hell rogue-lite · procedurally generated restaurants · crazy synergies · <a href="https://store.steampowered.com/app/4211490/Fast_Food_Wars/" target="_blank" style="color:#facc15;">wishlist now</a>
-                    </div>
                 </div>
 
                 <!-- ===== BLACK BALLZ ===== -->
@@ -505,9 +488,7 @@
 
         document.querySelectorAll('.game-gallery img').forEach(img => {
             img.addEventListener('mouseenter', function(e) {
-                // ---- FIX: Reset the inline display style so the CSS class can show it ----
                 preview.style.display = '';
-                
                 preview.src = this.src;
                 preview.alt = this.alt || 'Game preview';
                 clearTimeout(hoverTimeout);
@@ -524,7 +505,6 @@
             img.addEventListener('mouseleave', function() {
                 clearTimeout(hoverTimeout);
                 preview.classList.remove('visible');
-                // Hide it after a tiny delay to prevent flicker
                 setTimeout(() => {
                     if (!preview.classList.contains('visible')) {
                         preview.style.display = 'none';
@@ -545,7 +525,6 @@
                 lightboxImg.alt = this.alt || 'Game screenshot';
                 lightbox.classList.add('active');
                 document.body.style.overflow = 'hidden';
-                // hide hover preview while lightbox is open
                 preview.classList.remove('visible');
             });
         });
