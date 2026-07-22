@@ -4,57 +4,105 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Black Ballz — 1FPS Games</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,800;14..32,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <style>
-        .game-page-hero {
-            padding: 60px 0 40px;
+        .game-hero {
+            position: relative;
+            padding: 80px 0 60px;
             text-align: center;
+            background: linear-gradient(180deg, #14181c 0%, #0b0d10 100%);
             border-bottom: 1px solid #1f2937;
+            overflow: hidden;
         }
-        .game-page-hero h1 {
+        .game-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(250, 204, 21, 0.05) 0%, transparent 70%);
+            animation: heroGlow 20s ease-in-out infinite alternate;
+        }
+        @keyframes heroGlow {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(10%, 10%); }
+        }
+        .game-hero * { position: relative; z-index: 1; }
+
+        .game-hero .game-icon {
             font-size: 4rem;
+            display: block;
+            margin-bottom: 16px;
+        }
+        .game-hero h1 {
+            font-size: 4.5rem;
             font-weight: 900;
             letter-spacing: -0.04em;
             line-height: 1.1;
+            background: linear-gradient(135deg, #facc15, #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        .game-page-hero .game-tag {
+        .game-hero .game-tag {
             display: inline-block;
-            margin-top: 8px;
+            margin-top: 12px;
             font-size: 0.85rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: #facc15;
             background: #1f2937;
-            padding: 4px 20px;
+            padding: 6px 24px;
             border-radius: 40px;
         }
-        .game-page-content {
+        .game-hero .game-status {
+            display: inline-block;
+            margin-top: 12px;
+            margin-left: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #34d399;
+            background: rgba(52, 211, 153, 0.15);
+            padding: 6px 20px;
+            border-radius: 40px;
+            border: 1px solid rgba(52, 211, 153, 0.3);
+        }
+
+        .game-content {
             padding: 60px 0;
         }
-        .game-page-content .game-description {
-            max-width: 800px;
-            margin: 0 auto 40px;
-            text-align: center;
-            color: #9ca3af;
-            font-size: 1.15rem;
-            line-height: 1.8;
+
+        .trailer-section {
+            max-width: 900px;
+            margin: 0 auto 60px;
         }
-        .trailer-container {
-            max-width: 800px;
-            margin: 0 auto 50px;
+        .trailer-section .section-label {
+            text-align: center;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #6b7280;
+            margin-bottom: 16px;
+        }
+        .trailer-wrapper {
+            position: relative;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
             border: 1px solid #1f2937;
-            position: relative;
             padding-bottom: 56.25%;
             height: 0;
+            background: #0b0d10;
         }
-        .trailer-container iframe {
+        .trailer-wrapper iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -62,17 +110,143 @@
             height: 100%;
             border: none;
         }
-        .game-links-section {
+
+        .about-section {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            text-align: center;
+        }
+        .about-section h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: #eaeef2;
+        }
+        .about-section p {
+            color: #9ca3af;
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 16px;
+        }
+        .about-section .highlight-box {
+            background: #14181c;
+            border: 1px solid #1f2937;
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .about-section .highlight-box ul {
+            list-style: none;
+            padding: 0;
+            color: #d1d5db;
+        }
+        .about-section .highlight-box ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #1f2937;
+            font-size: 0.95rem;
+        }
+        .about-section .highlight-box ul li:last-child {
+            border-bottom: none;
+        }
+        .about-section .highlight-box ul li::before {
+            content: '▸ ';
+            color: #facc15;
+            font-weight: 700;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+        .feature-item {
+            background: #14181c;
+            border: 1px solid #1f2937;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            transition: border-color 0.2s;
+        }
+        .feature-item:hover {
+            border-color: #facc15;
+        }
+        .feature-item .feature-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .feature-item .feature-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #eaeef2;
+        }
+        .feature-item .feature-desc {
+            font-size: 0.8rem;
+            color: #9ca3af;
+            margin-top: 4px;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto 50px;
+        }
+        .screenshot-grid img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 1px solid #1f2937;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .screenshot-grid img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+            border-color: #facc15;
+        }
+
+        .store-buttons {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 16px;
-            margin-top: 30px;
+            margin-top: 20px;
         }
-        .game-links-section .btn {
-            min-width: 160px;
+        .store-buttons .btn {
+            min-width: 180px;
+            text-align: center;
+            padding: 14px 32px;
+            font-size: 1rem;
+        }
+
+        .quotes-section {
+            max-width: 700px;
+            margin: 50px auto 0;
+            padding: 30px;
+            background: #14181c;
+            border-radius: 20px;
+            border: 1px solid #1f2937;
             text-align: center;
         }
+        .quotes-section .quote {
+            font-size: 1.05rem;
+            color: #d1d5db;
+            font-style: italic;
+            line-height: 1.6;
+        }
+        .quotes-section .quote-author {
+            margin-top: 12px;
+            font-size: 0.85rem;
+            color: #facc15;
+            font-weight: 600;
+        }
+
         .back-link {
             display: inline-block;
             margin-top: 40px;
@@ -82,71 +256,100 @@
         .back-link:hover {
             color: #facc15;
         }
-        .game-gallery-full {
-            display: flex;
-            gap: 16px;
-            overflow-x: auto;
-            padding: 20px 0;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            max-width: 1000px;
-            margin: 0 auto 40px;
-        }
-        .game-gallery-full img {
-            flex: 0 0 auto;
-            width: 250px;
-            height: 160px;
-            border-radius: 16px;
-            object-fit: cover;
-            scroll-snap-align: start;
-            border: 1px solid #2a2f38;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .game-gallery-full img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 24px rgba(250, 204, 21, 0.15);
-        }
+
         @media (max-width: 640px) {
-            .game-page-hero h1 { font-size: 2.8rem; }
-            .game-gallery-full img { width: 160px; height: 110px; }
+            .game-hero h1 { font-size: 2.8rem; }
+            .screenshot-grid {
+                grid-template-columns: 1fr;
+            }
+            .screenshot-grid img {
+                height: 200px;
+            }
+            .features-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .game-hero .game-status {
+                display: block;
+                margin-left: 0;
+                margin-top: 8px;
+            }
+        }
+        @media (max-width: 480px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header class="game-page-hero">
+    <!-- ===== HERO ===== -->
+    <header class="game-hero">
         <div class="container">
-            <a href="index.html" class="back-link">← Back to games</a>
-            <h1>⚫ Black Ballz</h1>
-            <span class="game-tag">Platformer · Casual</span>
+            <a href="index.html" class="back-link" style="position:relative;z-index:2;">← Back to games</a>
+            <span class="game-icon">⚫</span>
+            <h1>Black Ballz</h1>
+            <div>
+                <span class="game-tag">Platformer · Casual</span>
+                <span class="game-status">● Available Now</span>
+            </div>
         </div>
     </header>
 
-    <section class="game-page-content">
+    <!-- ===== CONTENT ===== -->
+    <section class="game-content">
         <div class="container">
-            <div class="game-description">
-                <p>
-                    A minimalist platformer where you jump, dodge, and climb higher to unravel the mystery of a strange world. 
-                    Simple controls, tricky obstacles, and a vibe that pulls you in.
-                </p>
-                <p style="margin-top: 12px;">
-                    <strong>🎮 Available now!</strong> Download and play on Google Play.
-                </p>
-            </div>
 
             <!-- TRAILER -->
-            <div class="trailer-container">
-                <iframe 
-                    src="https://www.youtube.com/embed/yVCKELmYBIY" 
-                    title="Black Ballz Trailer"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                </iframe>
+            <div class="trailer-section">
+                <div class="section-label">▶ Gameplay Trailer</div>
+                <div class="trailer-wrapper">
+                    <iframe
+                        src="https://www.youtube.com/embed/yVCKELmYBIY"
+                        title="Black Ballz Trailer"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
             </div>
 
-            <!-- GALLERY -->
-            <div class="game-gallery-full">
+            <!-- ABOUT -->
+            <div class="about-section">
+                <h2>About the Game</h2>
+                <p>
+                    <strong>Black Ballz</strong> is a go‑up platformer game where your health determines how many jumps you can make. Battle bosses to get rewards or ignore them – the choice is yours. Reach the top and discover the hidden mystery of this world.
+                </p>
+                <div class="highlight-box">
+                    <ul>
+                        <li><strong>Jump-Based Health</strong> – Your health is your jumps</li>
+                        <li><strong>Boss Battles</strong> – Fight or ignore them, your choice</li>
+                        <li><strong>Mystery to Unlock</strong> – Reach the top to discover the truth</li>
+                        <li><strong>Minimalist Design</strong> – Clean, atmospheric, challenging</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- FEATURES (3 items) -->
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="feature-icon">🕹️</span>
+                    <div class="feature-label">Simple Controls</div>
+                    <div class="feature-desc">Easy to learn, hard to master</div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🧗</span>
+                    <div class="feature-label">Go‑Up Platforming</div>
+                    <div class="feature-desc">Climb higher and higher</div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🏆</span>
+                    <div class="feature-label">Boss Battles</div>
+                    <div class="feature-desc">Fight for rewards or skip them</div>
+                </div>
+            </div>
+
+            <!-- SCREENSHOTS (Grid) -->
+            <div class="screenshot-grid">
                 <img src="https://play-lh.googleusercontent.com/OyClKWVtyPOiO0hYVfM76dNzbMozua8fFEUPiEg4Z4ZxYgqRnT93haM8tOFcZLT7q6cBgE1XhkwMc5qQPL3uqA=w526-h296-rw" alt="Black Ballz 1" />
                 <img src="https://play-lh.googleusercontent.com/lFc4f-xydNNICZJhSH2kZSEEl821LP0b1F5_9XeNze1vfHYQj4tlTbBzp5A4XVw_d97s4ehnZUJDlf5fetm8AQ=w526-h296-rw" alt="Black Ballz 2" />
                 <img src="https://play-lh.googleusercontent.com/QP9L7s_VzWaVBdxAHklePJasHX6oSVU-AXl0LgVOF_2V_WOPk0MUlA8xfrs9g4e0HBfuQ-sikEfa4BJWZBFZ=w2560-h1440-rw" alt="Black Ballz 3" />
@@ -154,16 +357,32 @@
             </div>
 
             <!-- STORE LINKS -->
-            <div class="game-links-section">
-                <a href="https://play.google.com/store/apps/details?id=com.blackballz" target="_blank" class="btn btn-primary">📱 Google Play</a>
+            <div style="text-align:center;">
+                <h2 style="font-size:1.5rem;font-weight:700;margin-bottom:8px;">Play Now</h2>
+                <p style="color:#9ca3af;margin-bottom:20px;">Download for free on Google Play</p>
+                <div class="store-buttons">
+                    <a href="https://play.google.com/store/apps/details?id=com.blackballz" target="_blank" class="btn btn-primary">📱 Google Play</a>
+                </div>
             </div>
 
-            <div style="text-align: center; margin-top: 40px;">
+            <!-- PLAYER QUOTES -->
+            <div class="quotes-section">
+                <div class="quote">"Really fun game. Perfectly tows the line between challenging and punishing which makes beating it all the more rewarding. Especially for us of the neuro divergent bunch 😁"</div>
+                <div class="quote-author">— Tobi Egundebi ★★★★★</div>
+                <div style="margin-top:12px;display:flex;justify-content:center;gap:4px;color:#facc15;">
+                    ★★★★★
+                </div>
+            </div>
+
+            <!-- BACK LINK -->
+            <div style="text-align:center;">
                 <a href="index.html" class="back-link">← Back to all games</a>
             </div>
+
         </div>
     </section>
 
+    <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="container">
             <div class="social-links">
@@ -176,6 +395,7 @@
         </div>
     </footer>
 
+    <!-- Lightbox -->
     <img class="hover-preview" id="hoverPreview" src="" alt="preview" />
     <div class="lightbox-overlay" id="lightbox">
         <button class="lightbox-close" id="lightboxClose">&times;</button>

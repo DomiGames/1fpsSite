@@ -4,58 +4,106 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Fast Food Wars — 1FPS Games</title>
+    <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,800;14..32,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <style>
-        /* Game page specific styles */
-        .game-page-hero {
-            padding: 60px 0 40px;
+        /* ----- GAME PAGE SPECIFIC ----- */
+        .game-hero {
+            position: relative;
+            padding: 80px 0 60px;
             text-align: center;
+            background: linear-gradient(180deg, #14181c 0%, #0b0d10 100%);
             border-bottom: 1px solid #1f2937;
+            overflow: hidden;
         }
-        .game-page-hero h1 {
+        .game-hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(ellipse at center, rgba(250, 204, 21, 0.05) 0%, transparent 70%);
+            animation: heroGlow 20s ease-in-out infinite alternate;
+        }
+        @keyframes heroGlow {
+            0% { transform: translate(0, 0); }
+            100% { transform: translate(10%, 10%); }
+        }
+        .game-hero * { position: relative; z-index: 1; }
+
+        .game-hero .game-icon {
             font-size: 4rem;
+            display: block;
+            margin-bottom: 16px;
+        }
+        .game-hero h1 {
+            font-size: 4.5rem;
             font-weight: 900;
             letter-spacing: -0.04em;
             line-height: 1.1;
+            background: linear-gradient(135deg, #facc15, #f97316);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        .game-page-hero .game-tag {
+        .game-hero .game-tag {
             display: inline-block;
-            margin-top: 8px;
+            margin-top: 12px;
             font-size: 0.85rem;
             font-weight: 600;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: #facc15;
             background: #1f2937;
-            padding: 4px 20px;
+            padding: 6px 24px;
             border-radius: 40px;
         }
-        .game-page-content {
+        .game-hero .game-status {
+            display: inline-block;
+            margin-top: 12px;
+            margin-left: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #34d399;
+            background: rgba(52, 211, 153, 0.15);
+            padding: 6px 20px;
+            border-radius: 40px;
+            border: 1px solid rgba(52, 211, 153, 0.3);
+        }
+
+        .game-content {
             padding: 60px 0;
         }
-        .game-page-content .game-description {
-            max-width: 800px;
-            margin: 0 auto 40px;
-            text-align: center;
-            color: #9ca3af;
-            font-size: 1.15rem;
-            line-height: 1.8;
+
+        .trailer-section {
+            max-width: 900px;
+            margin: 0 auto 60px;
         }
-        .trailer-container {
-            max-width: 800px;
-            margin: 0 auto 50px;
+        .trailer-section .section-label {
+            text-align: center;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #6b7280;
+            margin-bottom: 16px;
+        }
+        .trailer-wrapper {
+            position: relative;
             border-radius: 20px;
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
             border: 1px solid #1f2937;
-            position: relative;
             padding-bottom: 56.25%;
             height: 0;
+            background: #0b0d10;
         }
-        .trailer-container iframe {
+        .trailer-wrapper iframe {
             position: absolute;
             top: 0;
             left: 0;
@@ -63,17 +111,143 @@
             height: 100%;
             border: none;
         }
-        .game-links-section {
+
+        .about-section {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            text-align: center;
+        }
+        .about-section h2 {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 16px;
+            color: #eaeef2;
+        }
+        .about-section p {
+            color: #9ca3af;
+            font-size: 1.05rem;
+            line-height: 1.9;
+            margin-bottom: 16px;
+        }
+        .about-section .highlight-box {
+            background: #14181c;
+            border: 1px solid #1f2937;
+            border-radius: 16px;
+            padding: 24px;
+            margin-top: 20px;
+            text-align: left;
+        }
+        .about-section .highlight-box ul {
+            list-style: none;
+            padding: 0;
+            color: #d1d5db;
+        }
+        .about-section .highlight-box ul li {
+            padding: 8px 0;
+            border-bottom: 1px solid #1f2937;
+            font-size: 0.95rem;
+        }
+        .about-section .highlight-box ul li:last-child {
+            border-bottom: none;
+        }
+        .about-section .highlight-box ul li::before {
+            content: '▸ ';
+            color: #facc15;
+            font-weight: 700;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+        .feature-item {
+            background: #14181c;
+            border: 1px solid #1f2937;
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            transition: border-color 0.2s;
+        }
+        .feature-item:hover {
+            border-color: #facc15;
+        }
+        .feature-item .feature-icon {
+            font-size: 2rem;
+            display: block;
+            margin-bottom: 8px;
+        }
+        .feature-item .feature-label {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #eaeef2;
+        }
+        .feature-item .feature-desc {
+            font-size: 0.8rem;
+            color: #9ca3af;
+            margin-top: 4px;
+        }
+
+        .screenshot-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 900px;
+            margin: 0 auto 50px;
+        }
+        .screenshot-grid img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            border-radius: 16px;
+            border: 1px solid #1f2937;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .screenshot-grid img:hover {
+            transform: scale(1.03);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+            border-color: #facc15;
+        }
+
+        .store-buttons {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 16px;
-            margin-top: 30px;
+            margin-top: 20px;
         }
-        .game-links-section .btn {
-            min-width: 160px;
+        .store-buttons .btn {
+            min-width: 180px;
+            text-align: center;
+            padding: 14px 32px;
+            font-size: 1rem;
+        }
+
+        .quotes-section {
+            max-width: 700px;
+            margin: 50px auto 0;
+            padding: 30px;
+            background: #14181c;
+            border-radius: 20px;
+            border: 1px solid #1f2937;
             text-align: center;
         }
+        .quotes-section .quote {
+            font-size: 1.05rem;
+            color: #d1d5db;
+            font-style: italic;
+            line-height: 1.6;
+        }
+        .quotes-section .quote-author {
+            margin-top: 12px;
+            font-size: 0.85rem;
+            color: #facc15;
+            font-weight: 600;
+        }
+
         .back-link {
             display: inline-block;
             margin-top: 40px;
@@ -83,71 +257,107 @@
         .back-link:hover {
             color: #facc15;
         }
-        .game-gallery-full {
-            display: flex;
-            gap: 16px;
-            overflow-x: auto;
-            padding: 20px 0;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-            max-width: 1000px;
-            margin: 0 auto 40px;
-        }
-        .game-gallery-full img {
-            flex: 0 0 auto;
-            width: 250px;
-            height: 160px;
-            border-radius: 16px;
-            object-fit: cover;
-            scroll-snap-align: start;
-            border: 1px solid #2a2f38;
-            cursor: pointer;
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-        }
-        .game-gallery-full img:hover {
-            transform: scale(1.05);
-            box-shadow: 0 8px 24px rgba(250, 204, 21, 0.15);
-        }
+
         @media (max-width: 640px) {
-            .game-page-hero h1 { font-size: 2.8rem; }
-            .game-gallery-full img { width: 160px; height: 110px; }
+            .game-hero h1 { font-size: 2.8rem; }
+            .screenshot-grid {
+                grid-template-columns: 1fr;
+            }
+            .screenshot-grid img {
+                height: 200px;
+            }
+            .features-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            .game-hero .game-status {
+                display: block;
+                margin-left: 0;
+                margin-top: 8px;
+            }
+        }
+        @media (max-width: 480px) {
+            .features-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
 
-    <header class="game-page-hero">
+    <!-- ===== HERO ===== -->
+    <header class="game-hero">
         <div class="container">
-            <a href="index.html" class="back-link">← Back to games</a>
-            <h1>🍔 Fast Food Wars</h1>
-            <span class="game-tag">Bullet-hell · Rogue-lite</span>
+            <a href="index.html" class="back-link" style="position:relative;z-index:2;">← Back to games</a>
+            <span class="game-icon">🍔</span>
+            <h1>Fast Food Wars</h1>
+            <div>
+                <span class="game-tag">Bullet-hell · Rogue-lite</span>
+                <span class="game-status">● Demo Available</span>
+            </div>
         </div>
     </header>
 
-    <section class="game-page-content">
+    <!-- ===== CONTENT ===== -->
+    <section class="game-content">
         <div class="container">
-            <div class="game-description">
-                <p>
-                    Play as a burger mercenary and fight off waves of evil hotdogs, ninja pizza slices, and exploding donuts. 
-                    Shoot, dash, collect power-ups, and reclaim the restaurant in this chaotic pixel-art brawler.
-                </p>
-                <p style="margin-top: 12px;">
-                    <strong>🎮 Demo available now!</strong> Download and play for free on Google Play and Steam.
-                </p>
-            </div>
 
             <!-- TRAILER -->
-            <div class="trailer-container">
-                <iframe 
-                    src="https://www.youtube.com/embed/PLACEHOLDER_FFW_TRAILER" 
-                    title="Fast Food Wars Trailer"
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen>
-                </iframe>
+            <div class="trailer-section">
+                <div class="section-label">▶ Gameplay Trailer</div>
+                <div class="trailer-wrapper">
+                    <iframe
+                        src="https://www.youtube.com/embed/Bq3saqY6ze4"
+                        title="Fast Food Wars Trailer"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen>
+                    </iframe>
+                </div>
             </div>
 
-            <!-- GALLERY -->
-            <div class="game-gallery-full">
+            <!-- ABOUT -->
+            <div class="about-section">
+                <h2>About the Game</h2>
+                <p>
+                    <strong>Fast Food Wars</strong> is a bullet-hell shoot'em up rogue-lite game set in procedurally generated restaurants with random power-ups and weapons. You play as a burger fighting to claim back invaded burger restaurants from other fast foods.
+                </p>
+                <p>
+                    Dash between enemy fire, slice them up to bits, shoot your enemies into oblivion, and survive chaotic encounters across procedurally generated levels that change every run. Collect powerful buffs, weapons, and special abilities to build crazy synergies that help you dominate the battlefield.
+                </p>
+                <p>
+                    <strong>Clear all rooms in a restaurant and fight the boss of that restaurant.</strong> No run is the same with procedurally generated levels, weapons, and buffs.
+                </p>
+                <div class="highlight-box">
+                    <ul>
+                        <li><strong>No Ads</strong> – Play without interruptions</li>
+                        <li><strong>No Gems or Premium Currency</strong> – Fair, honest design</li>
+                        <li><strong>One-Time Purchase</strong> – Play a level, then buy the full game once</li>
+                        <li><strong>Procedurally Generated</strong> – Every run is unique</li>
+                        <li><strong>Crazy Synergies</strong> – Combine power-ups for wild combos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- FEATURES (3 items) -->
+            <div class="features-grid">
+                <div class="feature-item">
+                    <span class="feature-icon">🎯</span>
+                    <div class="feature-label">Bullet-Hell Action</div>
+                    <div class="feature-desc">Intense dodging & shooting</div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">🔄</span>
+                    <div class="feature-label">Rogue-Lite Runs</div>
+                    <div class="feature-desc">Procedurally generated restaurants</div>
+                </div>
+                <div class="feature-item">
+                    <span class="feature-icon">💪</span>
+                    <div class="feature-label">Power-Ups & Buffs</div>
+                    <div class="feature-desc">Build crazy synergies</div>
+                </div>
+            </div>
+
+            <!-- SCREENSHOTS (Grid) -->
+            <div class="screenshot-grid">
                 <img src="https://play-lh.googleusercontent.com/sE0UJAMuiENo0U4VsJIFgFgNDq8zUzVj5loF8V1zToACH_VHuvGX9KH2VzwXmLGCQTAPgLp0yP_f92757Vk2bw=w2560-h1440-rw" alt="Fast Food Wars 1" />
                 <img src="https://play-lh.googleusercontent.com/_iHJIjIrjtfEhPn2KGOLKWU6pXfT9Y1OkTu14nZn2ZuKVRwJz_AbvB-GreAhlXxLtuZfOUn6UlhdSwbKP7H2=w2560-h1440-rw" alt="Fast Food Wars 2" />
                 <img src="https://play-lh.googleusercontent.com/UFQwf-MN1UXOmF05-E6Ly-fR_8wGnfJDqqDFyh0k0WsCrnfMD0a6XPAzzqM9hBjQhVXadGVDxzucWKih0hSn2g=w2560-h1440-rw" alt="Fast Food Wars 3" />
@@ -155,18 +365,34 @@
             </div>
 
             <!-- STORE LINKS -->
-            <div class="game-links-section">
-                <a href="https://store.steampowered.com/app/4211490/Fast_Food_Wars/" target="_blank" class="btn btn-primary">🎮 Steam</a>
-                <a href="https://play.google.com/store/apps/details?id=org.beast_burger_food_wars" target="_blank" class="btn btn-primary">📱 Google Play</a>
-                <a href="https://www.newgrounds.com/portal/view/1039469" target="_blank" class="btn btn-outline">🕹️ Newgrounds</a>
+            <div style="text-align:center;">
+                <h2 style="font-size:1.5rem;font-weight:700;margin-bottom:8px;">Play the Demo</h2>
+                <p style="color:#9ca3af;margin-bottom:20px;">Try it for free on your favourite platform</p>
+                <div class="store-buttons">
+                    <a href="https://store.steampowered.com/app/4211490/Fast_Food_Wars/" target="_blank" class="btn btn-primary">🎮 Steam</a>
+                    <a href="https://play.google.com/store/apps/details?id=org.beast_burger_food_wars" target="_blank" class="btn btn-primary">📱 Google Play</a>
+                    <a href="https://www.newgrounds.com/portal/view/1039469" target="_blank" class="btn btn-outline">🕹️ Newgrounds</a>
+                </div>
             </div>
 
-            <div style="text-align: center; margin-top: 40px;">
+            <!-- PLAYER QUOTES -->
+            <div class="quotes-section">
+                <div class="quote">"I suck at this game so bad, but playing it is just worth more than my life. I will definitely play it till I beat it even though I suck. I haven't been on Newgrounds for over half a year and when I came back I'm greeted with this masterpiece."</div>
+                <div class="quote-author">— Spelloww ★★★★★</div>
+                <div style="margin-top:12px;display:flex;justify-content:center;gap:4px;color:#facc15;">
+                    ★★★★★
+                </div>
+            </div>
+
+            <!-- BACK LINK -->
+            <div style="text-align:center;">
                 <a href="index.html" class="back-link">← Back to all games</a>
             </div>
+
         </div>
     </section>
 
+    <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="container">
             <div class="social-links">
@@ -179,6 +405,7 @@
         </div>
     </footer>
 
+    <!-- Lightbox -->
     <img class="hover-preview" id="hoverPreview" src="" alt="preview" />
     <div class="lightbox-overlay" id="lightbox">
         <button class="lightbox-close" id="lightboxClose">&times;</button>
