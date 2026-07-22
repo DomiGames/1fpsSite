@@ -9,9 +9,189 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,800;14..32,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
+    <style>
+        /* ----- HOMEPAGE OVERRIDES ----- */
+
+        /* Hero - taller, more dramatic */
+        .hero {
+            padding: 100px 0 80px;
+            text-align: center;
+            border-bottom: 1px solid #1f2937;
+            background: radial-gradient(ellipse at center, rgba(250, 204, 21, 0.03) 0%, transparent 70%);
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+        }
+
+        /* Game showcase grid - full width images */
+        .games-showcase {
+            padding: 60px 0;
+        }
+
+        .showcase-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 20px;
+        }
+
+        .showcase-card {
+            position: relative;
+            border-radius: 28px;
+            overflow: hidden;
+            border: 1px solid #1f2937;
+            transition: all 0.4s cubic-bezier(0.2, 0, 0, 1);
+            background: #14181c;
+            aspect-ratio: 16 / 10;
+            display: flex;
+            align-items: flex-end;
+            text-decoration: none;
+        }
+
+        .showcase-card:hover {
+            transform: scale(1.02);
+            border-color: #facc15;
+            box-shadow: 0 20px 60px rgba(250, 204, 21, 0.08);
+        }
+
+        .showcase-card img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .showcase-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .showcase-card .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px 28px 28px;
+            background: linear-gradient(0deg, rgba(11, 13, 16, 0.95) 0%, rgba(11, 13, 16, 0.7) 60%, transparent 100%);
+            z-index: 2;
+        }
+
+        .showcase-card .overlay h3 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            color: #fff;
+            margin-bottom: 4px;
+        }
+
+        .showcase-card .overlay .game-tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #facc15;
+            background: rgba(31, 41, 55, 0.8);
+            padding: 2px 14px;
+            border-radius: 40px;
+            margin-bottom: 10px;
+        }
+
+        .showcase-card .overlay .btn {
+            margin-top: 6px;
+            padding: 8px 24px;
+            font-size: 0.85rem;
+            background: #facc15;
+            color: #0b0d10;
+            border-radius: 40px;
+            font-weight: 600;
+            display: inline-block;
+            transition: all 0.2s ease;
+            border: none;
+            cursor: pointer;
+        }
+
+        .showcase-card .overlay .btn:hover {
+            background: #fbbf24;
+            transform: scale(1.02);
+        }
+
+        /* Small badge on the card (e.g., "Demo" or "Available Now") */
+        .showcase-card .badge {
+            position: absolute;
+            top: 18px;
+            right: 18px;
+            z-index: 3;
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 4px 16px;
+            border-radius: 40px;
+            background: rgba(52, 211, 153, 0.15);
+            color: #34d399;
+            border: 1px solid rgba(52, 211, 153, 0.3);
+            backdrop-filter: blur(4px);
+        }
+
+        .showcase-card .badge.orange {
+            background: rgba(250, 204, 21, 0.15);
+            color: #facc15;
+            border-color: rgba(250, 204, 21, 0.3);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .showcase-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .showcase-card {
+                aspect-ratio: 16 / 11;
+            }
+
+            .showcase-card .overlay h3 {
+                font-size: 1.8rem;
+            }
+
+            .hero h1 {
+                font-size: 3.5rem;
+            }
+
+            .hero {
+                padding: 60px 0 50px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .showcase-card .overlay h3 {
+                font-size: 1.5rem;
+            }
+
+            .showcase-card .overlay {
+                padding: 20px 20px 22px;
+            }
+
+            .showcase-card .badge {
+                top: 12px;
+                right: 12px;
+                font-size: 0.6rem;
+                padding: 3px 12px;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+        }
+    </style>
 </head>
 <body>
 
+    <!-- ===== HERO ===== -->
     <header class="hero">
         <div class="container">
             <div class="hero-badge">✦ indie studio</div>
@@ -21,58 +201,41 @@
                 Two titles, two worlds — one tiny studio with big ideas.
             </p>
             <div class="hero-actions">
-                <a href="#games" class="btn btn-primary">⬇ Explore our games</a>
+                <a href="#games" class="btn btn-primary">⬇ See our games</a>
                 <a href="https://play.google.com/store/apps/dev?id=5978014561218799099" target="_blank" class="btn btn-outline">Google Play</a>
             </div>
         </div>
     </header>
 
-    <section class="games-section" id="games">
+    <!-- ===== GAMES SHOWCASE ===== -->
+    <section class="games-showcase" id="games">
         <div class="container">
-            <h2 class="section-title">🎮 Our games</h2>
-            <p class="section-sub">
-                From bullet-hell chaos to minimalist platforming — every game is crafted with pixel love and a dash of madness.
+            <h2 class="section-title" style="text-align:center;">Our Games</h2>
+            <p class="section-sub" style="text-align:center;margin:0 auto 20px;">
+                Click any game to explore trailers, screenshots, and more.
             </p>
 
-            <div class="games-grid">
+            <div class="showcase-grid">
 
-                <!-- ===== FAST FOOD WARS ===== -->
-                <a href="fast-food-wars.html" class="game-card-link">
-                    <div class="game-card">
-                        <h3>Fast Food Wars</h3>
+                <!-- FAST FOOD WARS -->
+                <a href="fast-food-wars.html" class="showcase-card">
+                    <img src="https://play-lh.googleusercontent.com/sE0UJAMuiENo0U4VsJIFgFgNDq8zUzVj5loF8V1zToACH_VHuvGX9KH2VzwXmLGCQTAPgLp0yP_f92757Vk2bw=w2560-h1440-rw" alt="Fast Food Wars" />
+                    <span class="badge orange">● Demo</span>
+                    <div class="overlay">
                         <span class="game-tag">Bullet-hell · Rogue-lite</span>
-                        <p>
-                            Play as a burger mercenary and fight off waves of evil hotdogs, ninja pizza slices, and exploding donuts. Shoot, dash, collect power-ups, and reclaim the restaurant in this chaotic pixel-art brawler.
-                        </p>
-                        <div class="game-gallery">
-                            <img src="https://play-lh.googleusercontent.com/sE0UJAMuiENo0U4VsJIFgFgNDq8zUzVj5loF8V1zToACH_VHuvGX9KH2VzwXmLGCQTAPgLp0yP_f92757Vk2bw=w2560-h1440-rw" alt="Fast Food Wars 1" />
-                            <img src="https://play-lh.googleusercontent.com/_iHJIjIrjtfEhPn2KGOLKWU6pXfT9Y1OkTu14nZn2ZuKVRwJz_AbvB-GreAhlXxLtuZfOUn6UlhdSwbKP7H2=w2560-h1440-rw" alt="Fast Food Wars 2" />
-                            <img src="https://play-lh.googleusercontent.com/UFQwf-MN1UXOmF05-E6Ly-fR_8wGnfJDqqDFyh0k0WsCrnfMD0a6XPAzzqM9hBjQhVXadGVDxzucWKih0hSn2g=w2560-h1440-rw" alt="Fast Food Wars 3" />
-                            <img src="https://play-lh.googleusercontent.com/TR4a5CL5_N7U5aK46OGEfaNYTHj5wtZHCTLFn3YRKK6lu0rpqXqvHgxcIaDsR_EctJ2p1tdXWCOh-c09930qxfw=w526-h296-rw" alt="Fast Food Wars 4" />
-                        </div>
-                        <div class="store-links">
-                            <span class="btn btn-primary">View Game Page →</span>
-                        </div>
+                        <h3>Fast Food Wars</h3>
+                        <span class="btn">View Game →</span>
                     </div>
                 </a>
 
-                <!-- ===== BLACK BALLZ ===== -->
-                <a href="black-ballz.html" class="game-card-link">
-                    <div class="game-card">
-                        <h3>Black Ballz</h3>
+                <!-- BLACK BALLZ -->
+                <a href="black-ballz.html" class="showcase-card">
+                    <img src="https://play-lh.googleusercontent.com/OyClKWVtyPOiO0hYVfM76dNzbMozua8fFEUPiEg4Z4ZxYgqRnT93haM8tOFcZLT7q6cBgE1XhkwMc5qQPL3uqA=w526-h296-rw" alt="Black Ballz" />
+                    <span class="badge">● Available</span>
+                    <div class="overlay">
                         <span class="game-tag">Platformer · Casual</span>
-                        <p>
-                            A minimalist platformer where you jump, dodge, and climb higher to unravel the mystery of a strange world. Simple controls, tricky obstacles, and a vibe that pulls you in.
-                        </p>
-                        <div class="game-gallery">
-                            <img src="https://play-lh.googleusercontent.com/OyClKWVtyPOiO0hYVfM76dNzbMozua8fFEUPiEg4Z4ZxYgqRnT93haM8tOFcZLT7q6cBgE1XhkwMc5qQPL3uqA=w526-h296-rw" alt="Black Ballz 1" />
-                            <img src="https://play-lh.googleusercontent.com/lFc4f-xydNNICZJhSH2kZSEEl821LP0b1F5_9XeNze1vfHYQj4tlTbBzp5A4XVw_d97s4ehnZUJDlf5fetm8AQ=w526-h296-rw" alt="Black Ballz 2" />
-                            <img src="https://play-lh.googleusercontent.com/QP9L7s_VzWaVBdxAHklePJasHX6oSVU-AXl0LgVOF_2V_WOPk0MUlA8xfrs9g4e0HBfuQ-sikEfa4BJWZBFZ=w2560-h1440-rw" alt="Black Ballz 3" />
-                            <img src="https://play-lh.googleusercontent.com/ZsvpkglGdHUY4xej0wB7twHHoUWukZtod-kkZc6a5kdbbt3-DBJG6gPtNkKhbQz40sw1h8cOF_fnnKPZdR6Pyic=w2560-h1440-rw" alt="Black Ballz 4" />
-                        </div>
-                        <div class="store-links">
-                            <span class="btn btn-primary">View Game Page →</span>
-                        </div>
+                        <h3>Black Ballz</h3>
+                        <span class="btn">View Game →</span>
                     </div>
                 </a>
 
@@ -80,6 +243,7 @@
         </div>
     </section>
 
+    <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="container">
             <div class="social-links">
@@ -91,12 +255,6 @@
             <p>&copy; 2026 <a href="index.html">1FPS Games</a> — built with caffeine and chaos.</p>
         </div>
     </footer>
-
-    <img class="hover-preview" id="hoverPreview" src="" alt="preview" />
-    <div class="lightbox-overlay" id="lightbox">
-        <button class="lightbox-close" id="lightboxClose">&times;</button>
-        <img id="lightboxImg" src="" alt="Enlarged screenshot" />
-    </div>
 
     <script src="script.js"></script>
 </body>
