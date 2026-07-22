@@ -10,7 +10,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,800;14..32,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
     <style>
-        /* ----- GAME PAGE SPECIFIC ----- */
         .game-hero {
             position: relative;
             padding: 80px 0 60px;
@@ -35,11 +34,18 @@
         }
         .game-hero * { position: relative; z-index: 1; }
 
-        .game-hero .game-icon {
-            font-size: 4rem;
+        .game-icon-img {
+            width: 90px;
+            height: 90px;
+            object-fit: contain;
+            border-radius: 50%;
             display: block;
-            margin-bottom: 16px;
+            margin: 0 auto 16px;
+            background: #14181c;
+            padding: 6px;
+            border: 1px solid #1f2937;
         }
+
         .game-hero h1 {
             font-size: 4.5rem;
             font-weight: 900;
@@ -77,10 +83,7 @@
             border: 1px solid rgba(52, 211, 153, 0.3);
         }
 
-        .game-content {
-            padding: 60px 0;
-        }
-
+        .game-content { padding: 60px 0; }
         .trailer-section {
             max-width: 900px;
             margin: 0 auto 60px;
@@ -147,9 +150,7 @@
             border-bottom: 1px solid #1f2937;
             font-size: 0.95rem;
         }
-        .about-section .highlight-box ul li:last-child {
-            border-bottom: none;
-        }
+        .about-section .highlight-box ul li:last-child { border-bottom: none; }
         .about-section .highlight-box ul li::before {
             content: '▸ ';
             color: #facc15;
@@ -171,9 +172,7 @@
             text-align: center;
             transition: border-color 0.2s;
         }
-        .feature-item:hover {
-            border-color: #facc15;
-        }
+        .feature-item:hover { border-color: #facc15; }
         .feature-item .feature-icon {
             font-size: 2rem;
             display: block;
@@ -254,41 +253,32 @@
             color: #9ca3af;
             transition: color 0.2s;
         }
-        .back-link:hover {
-            color: #facc15;
-        }
+        .back-link:hover { color: #facc15; }
 
         @media (max-width: 640px) {
             .game-hero h1 { font-size: 2.8rem; }
-            .screenshot-grid {
-                grid-template-columns: 1fr;
-            }
-            .screenshot-grid img {
-                height: 200px;
-            }
-            .features-grid {
-                grid-template-columns: 1fr 1fr;
-            }
+            .screenshot-grid { grid-template-columns: 1fr; }
+            .screenshot-grid img { height: 200px; }
+            .features-grid { grid-template-columns: 1fr 1fr; }
             .game-hero .game-status {
                 display: block;
                 margin-left: 0;
                 margin-top: 8px;
             }
+            .game-icon-img { width: 70px; height: 70px; }
         }
         @media (max-width: 480px) {
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
+            .features-grid { grid-template-columns: 1fr; }
+            .game-icon-img { width: 60px; height: 60px; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== HERO ===== -->
     <header class="game-hero">
         <div class="container">
             <a href="index.html" class="back-link" style="position:relative;z-index:2;">← Back to games</a>
-            <span class="game-icon">🍔</span>
+            <img class="game-icon-img" src="ffw-icon.png" alt="Fast Food Wars icon" />
             <h1>Fast Food Wars</h1>
             <div>
                 <span class="game-tag">Bullet-hell · Rogue-lite</span>
@@ -297,7 +287,6 @@
         </div>
     </header>
 
-    <!-- ===== CONTENT ===== -->
     <section class="game-content">
         <div class="container">
 
@@ -305,27 +294,16 @@
             <div class="trailer-section">
                 <div class="section-label">▶ Gameplay Trailer</div>
                 <div class="trailer-wrapper">
-                    <iframe
-                        src="https://www.youtube.com/embed/Bq3saqY6ze4"
-                        title="Fast Food Wars Trailer"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowfullscreen>
-                    </iframe>
+                    <iframe src="https://www.youtube.com/embed/Bq3saqY6ze4" title="Fast Food Wars Trailer" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                 </div>
             </div>
 
             <!-- ABOUT -->
             <div class="about-section">
                 <h2>About the Game</h2>
-                <p>
-                    <strong>Fast Food Wars</strong> is a bullet-hell shoot'em up rogue-lite game set in procedurally generated restaurants with random power-ups and weapons. You play as a burger fighting to claim back invaded burger restaurants from other fast foods.
-                </p>
-                <p>
-                    Dash between enemy fire, slice them up to bits, shoot your enemies into oblivion, and survive chaotic encounters across procedurally generated levels that change every run. Collect powerful buffs, weapons, and special abilities to build crazy synergies that help you dominate the battlefield.
-                </p>
-                <p>
-                    <strong>Clear all rooms in a restaurant and fight the boss of that restaurant.</strong> No run is the same with procedurally generated levels, weapons, and buffs.
-                </p>
+                <p><strong>Fast Food Wars</strong> is a bullet-hell shoot'em up rogue-lite game set in procedurally generated restaurants with random power-ups and weapons. You play as a burger fighting to claim back invaded burger restaurants from other fast foods.</p>
+                <p>Dash between enemy fire, slice them up to bits, shoot your enemies into oblivion, and survive chaotic encounters across procedurally generated levels that change every run. Collect powerful buffs, weapons, and special abilities to build crazy synergies that help you dominate the battlefield.</p>
+                <p><strong>Clear all rooms in a restaurant and fight the boss of that restaurant.</strong> No run is the same with procedurally generated levels, weapons, and buffs.</p>
                 <div class="highlight-box">
                     <ul>
                         <li><strong>No Ads</strong> – Play without interruptions</li>
@@ -337,7 +315,7 @@
                 </div>
             </div>
 
-            <!-- FEATURES (3 items) -->
+            <!-- FEATURES -->
             <div class="features-grid">
                 <div class="feature-item">
                     <span class="feature-icon">🎯</span>
@@ -356,7 +334,7 @@
                 </div>
             </div>
 
-            <!-- SCREENSHOTS (Grid) -->
+            <!-- SCREENSHOTS -->
             <div class="screenshot-grid">
                 <img src="https://play-lh.googleusercontent.com/sE0UJAMuiENo0U4VsJIFgFgNDq8zUzVj5loF8V1zToACH_VHuvGX9KH2VzwXmLGCQTAPgLp0yP_f92757Vk2bw=w2560-h1440-rw" alt="Fast Food Wars 1" />
                 <img src="https://play-lh.googleusercontent.com/_iHJIjIrjtfEhPn2KGOLKWU6pXfT9Y1OkTu14nZn2ZuKVRwJz_AbvB-GreAhlXxLtuZfOUn6UlhdSwbKP7H2=w2560-h1440-rw" alt="Fast Food Wars 2" />
@@ -375,16 +353,13 @@
                 </div>
             </div>
 
-            <!-- PLAYER QUOTES -->
+            <!-- QUOTES -->
             <div class="quotes-section">
                 <div class="quote">"I suck at this game so bad, but playing it is just worth more than my life. I will definitely play it till I beat it even though I suck. I haven't been on Newgrounds for over half a year and when I came back I'm greeted with this masterpiece."</div>
                 <div class="quote-author">— Spelloww ★★★★★</div>
-                <div style="margin-top:12px;display:flex;justify-content:center;gap:4px;color:#facc15;">
-                    ★★★★★
-                </div>
+                <div style="margin-top:12px;display:flex;justify-content:center;gap:4px;color:#facc15;">★★★★★</div>
             </div>
 
-            <!-- BACK LINK -->
             <div style="text-align:center;">
                 <a href="index.html" class="back-link">← Back to all games</a>
             </div>
@@ -392,7 +367,6 @@
         </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
     <footer class="footer">
         <div class="container">
             <div class="social-links">
@@ -405,7 +379,6 @@
         </div>
     </footer>
 
-    <!-- Lightbox -->
     <img class="hover-preview" id="hoverPreview" src="" alt="preview" />
     <div class="lightbox-overlay" id="lightbox">
         <button class="lightbox-close" id="lightboxClose">&times;</button>
