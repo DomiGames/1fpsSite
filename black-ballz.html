@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Black Ballz — 1FPS Games</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,800;14..32,900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+    <style>
+        .game-page-hero {
+            padding: 60px 0 40px;
+            text-align: center;
+            border-bottom: 1px solid #1f2937;
+        }
+        .game-page-hero h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            line-height: 1.1;
+        }
+        .game-page-hero .game-tag {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #facc15;
+            background: #1f2937;
+            padding: 4px 20px;
+            border-radius: 40px;
+        }
+        .game-page-content {
+            padding: 60px 0;
+        }
+        .game-page-content .game-description {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-align: center;
+            color: #9ca3af;
+            font-size: 1.15rem;
+            line-height: 1.8;
+        }
+        .trailer-container {
+            max-width: 800px;
+            margin: 0 auto 50px;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            border: 1px solid #1f2937;
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+        }
+        .trailer-container iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        .game-links-section {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+            margin-top: 30px;
+        }
+        .game-links-section .btn {
+            min-width: 160px;
+            text-align: center;
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 40px;
+            color: #9ca3af;
+            transition: color 0.2s;
+        }
+        .back-link:hover {
+            color: #facc15;
+        }
+        .game-gallery-full {
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            padding: 20px 0;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            max-width: 1000px;
+            margin: 0 auto 40px;
+        }
+        .game-gallery-full img {
+            flex: 0 0 auto;
+            width: 250px;
+            height: 160px;
+            border-radius: 16px;
+            object-fit: cover;
+            scroll-snap-align: start;
+            border: 1px solid #2a2f38;
+            cursor: pointer;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .game-gallery-full img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 24px rgba(250, 204, 21, 0.15);
+        }
+        @media (max-width: 640px) {
+            .game-page-hero h1 { font-size: 2.8rem; }
+            .game-gallery-full img { width: 160px; height: 110px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="game-page-hero">
+        <div class="container">
+            <a href="index.html" class="back-link">← Back to games</a>
+            <h1>⚫ Black Ballz</h1>
+            <span class="game-tag">Platformer · Casual</span>
+        </div>
+    </header>
+
+    <section class="game-page-content">
+        <div class="container">
+            <div class="game-description">
+                <p>
+                    A minimalist platformer where you jump, dodge, and climb higher to unravel the mystery of a strange world. 
+                    Simple controls, tricky obstacles, and a vibe that pulls you in.
+                </p>
+                <p style="margin-top: 12px;">
+                    <strong>🎮 Available now!</strong> Download and play on Google Play.
+                </p>
+            </div>
+
+            <!-- TRAILER -->
+            <div class="trailer-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/yVCKELmYBIY" 
+                    title="Black Ballz Trailer"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowfullscreen>
+                </iframe>
+            </div>
+
+            <!-- GALLERY -->
+            <div class="game-gallery-full">
+                <img src="https://play-lh.googleusercontent.com/OyClKWVtyPOiO0hYVfM76dNzbMozua8fFEUPiEg4Z4ZxYgqRnT93haM8tOFcZLT7q6cBgE1XhkwMc5qQPL3uqA=w526-h296-rw" alt="Black Ballz 1" />
+                <img src="https://play-lh.googleusercontent.com/lFc4f-xydNNICZJhSH2kZSEEl821LP0b1F5_9XeNze1vfHYQj4tlTbBzp5A4XVw_d97s4ehnZUJDlf5fetm8AQ=w526-h296-rw" alt="Black Ballz 2" />
+                <img src="https://play-lh.googleusercontent.com/QP9L7s_VzWaVBdxAHklePJasHX6oSVU-AXl0LgVOF_2V_WOPk0MUlA8xfrs9g4e0HBfuQ-sikEfa4BJWZBFZ=w2560-h1440-rw" alt="Black Ballz 3" />
+                <img src="https://play-lh.googleusercontent.com/ZsvpkglGdHUY4xej0wB7twHHoUWukZtod-kkZc6a5kdbbt3-DBJG6gPtNkKhbQz40sw1h8cOF_fnnKPZdR6Pyic=w2560-h1440-rw" alt="Black Ballz 4" />
+            </div>
+
+            <!-- STORE LINKS -->
+            <div class="game-links-section">
+                <a href="https://play.google.com/store/apps/details?id=com.blackballz" target="_blank" class="btn btn-primary">📱 Google Play</a>
+            </div>
+
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="index.html" class="back-link">← Back to all games</a>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="social-links">
+                <a href="https://x.com/nobledestus0" target="_blank">🐦 X (Twitter)</a>
+                <a href="https://www.youtube.com/@DSquareGames-f5x" target="_blank">▶️ YouTube</a>
+                <a href="https://discord.gg/82nvSSJtq" target="_blank">💬 Discord</a>
+                <a href="mailto:dsquaregames0@gmail.com">✉️ Email</a>
+            </div>
+            <p>&copy; 2026 <a href="index.html">1FPS Games</a> — built with caffeine and chaos.</p>
+        </div>
+    </footer>
+
+    <img class="hover-preview" id="hoverPreview" src="" alt="preview" />
+    <div class="lightbox-overlay" id="lightbox">
+        <button class="lightbox-close" id="lightboxClose">&times;</button>
+        <img id="lightboxImg" src="" alt="Enlarged screenshot" />
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
