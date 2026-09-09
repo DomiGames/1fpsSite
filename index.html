@@ -3,259 +3,172 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>1FPS Games — Indie Game Studio</title>
+    <title>1FPS Games | Indie Game Studio</title>
+    <meta name="description" content="1FPS Games is an indie game studio with three games: Dome 3.0, Fast Food Wars, and Black Ballz. Three worlds, one tiny studio with big ideas." />
     <link rel="icon" type="image/png" href="favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,600;14..32,800;14..32,900&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="style.css" />
-    <style>
-        /* ----- HOMEPAGE OVERRIDES ----- */
-
-        /* Hero - taller, more dramatic */
-        .hero {
-            padding: 100px 0 80px;
-            text-align: center;
-            border-bottom: 1px solid #1f2937;
-            background: radial-gradient(ellipse at center, rgba(250, 204, 21, 0.03) 0%, transparent 70%);
-        }
-
-        .hero h1 {
-            font-size: 5rem;
-        }
-
-        /* Game showcase grid - full width images */
-        .games-showcase {
-            padding: 60px 0;
-        }
-
-        .showcase-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            margin-top: 20px;
-        }
-
-        .showcase-card {
-            position: relative;
-            border-radius: 28px;
-            overflow: hidden;
-            border: 1px solid #1f2937;
-            transition: all 0.4s cubic-bezier(0.2, 0, 0, 1);
-            background: #14181c;
-            aspect-ratio: 16 / 10;
-            display: flex;
-            align-items: flex-end;
-            text-decoration: none;
-        }
-
-        .showcase-card:hover {
-            transform: scale(1.02);
-            border-color: #facc15;
-            box-shadow: 0 20px 60px rgba(250, 204, 21, 0.08);
-        }
-
-        .showcase-card img {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.6s ease;
-        }
-
-        .showcase-card:hover img {
-            transform: scale(1.05);
-        }
-
-        .showcase-card .overlay {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            padding: 30px 28px 28px;
-            background: linear-gradient(0deg, rgba(11, 13, 16, 0.95) 0%, rgba(11, 13, 16, 0.7) 60%, transparent 100%);
-            z-index: 2;
-        }
-
-        .showcase-card .overlay h3 {
-            font-size: 2.2rem;
-            font-weight: 800;
-            letter-spacing: -0.02em;
-            color: #fff;
-            margin-bottom: 4px;
-        }
-
-        .showcase-card .overlay .game-tag {
-            display: inline-block;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            color: #facc15;
-            background: rgba(31, 41, 55, 0.8);
-            padding: 2px 14px;
-            border-radius: 40px;
-            margin-bottom: 10px;
-        }
-
-        .showcase-card .overlay .btn {
-            margin-top: 6px;
-            padding: 8px 24px;
-            font-size: 0.85rem;
-            background: #facc15;
-            color: #0b0d10;
-            border-radius: 40px;
-            font-weight: 600;
-            display: inline-block;
-            transition: all 0.2s ease;
-            border: none;
-            cursor: pointer;
-        }
-
-        .showcase-card .overlay .btn:hover {
-            background: #fbbf24;
-            transform: scale(1.02);
-        }
-
-        /* Small badge on the card (e.g., "Demo" or "Available Now") */
-        .showcase-card .badge {
-            position: absolute;
-            top: 18px;
-            right: 18px;
-            z-index: 3;
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-            padding: 4px 16px;
-            border-radius: 40px;
-            background: rgba(52, 211, 153, 0.15);
-            color: #34d399;
-            border: 1px solid rgba(52, 211, 153, 0.3);
-            backdrop-filter: blur(4px);
-        }
-
-        .showcase-card .badge.orange {
-            background: rgba(250, 204, 21, 0.15);
-            color: #facc15;
-            border-color: rgba(250, 204, 21, 0.3);
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .showcase-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-
-            .showcase-card {
-                aspect-ratio: 16 / 11;
-            }
-
-            .showcase-card .overlay h3 {
-                font-size: 1.8rem;
-            }
-
-            .hero h1 {
-                font-size: 3.5rem;
-            }
-
-            .hero {
-                padding: 60px 0 50px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .showcase-card .overlay h3 {
-                font-size: 1.5rem;
-            }
-
-            .showcase-card .overlay {
-                padding: 20px 20px 22px;
-            }
-
-            .showcase-card .badge {
-                top: 12px;
-                right: 12px;
-                font-size: 0.6rem;
-                padding: 3px 12px;
-            }
-
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-        }
-    </style>
 </head>
 <body>
 
-    <!-- ===== HERO ===== -->
-    <header class="hero">
-        <div class="container">
-            <div class="hero-badge">✦ indie studio</div>
-            <h1>1<span class="highlight">FPS</span> Games</h1>
-            <p>
-                We build games that shock players with excitement and adventure.<br />
-                Two titles, two worlds — one tiny studio with big ideas.
-            </p>
-            <div class="hero-actions">
-                <a href="#games" class="btn btn-primary">⬇ See our games</a>
-                <a href="https://play.google.com/store/apps/dev?id=5978014561218799099" target="_blank" class="btn btn-outline">Google Play</a>
+    <!-- ===== NAV ===== -->
+    <header class="site-header">
+        <nav class="nav-inner" aria-label="Main">
+            <a class="brand" href="index.html">
+                <span class="brand-mark">1</span>
+                <span>1FPS <span class="brand-dim">Games</span></span>
+            </a>
+            <div class="nav-links">
+                <a class="nav-link" href="#games">Games</a>
+                <a class="nav-link" href="#studio">Studio</a>
+                <a class="nav-link" href="mailto:dsquaregames0@gmail.com">Contact</a>
+                <a class="btn btn-ghost btn-sm" href="https://play.google.com/store/apps/dev?id=5978014561218799099" target="_blank" rel="noopener">Google Play</a>
             </div>
-        </div>
+        </nav>
     </header>
 
-    <!-- ===== GAMES SHOWCASE ===== -->
-    <section class="games-showcase" id="games">
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div>
+                <span class="kicker">Indie game studio</span>
+                <h1>1FPS <span class="accent">Games</span></h1>
+                <p class="lede">
+                    We build games that surprise and delight: <strong>three titles, three worlds</strong>,
+                    one tiny studio with big ideas.
+                </p>
+                <div class="hero-actions">
+                    <a href="#games" class="btn btn-primary btn-lg">View our games</a>
+                    <a href="https://play.google.com/store/apps/dev?id=5978014561218799099" target="_blank" rel="noopener" class="btn btn-ghost btn-lg">Google Play</a>
+                </div>
+            </div>
+
+            <div class="hero-art">
+                <a class="poster" href="fast-food-wars.html">
+                    <img src="https://play-lh.googleusercontent.com/sE0UJAMuiENo0U4VsJIFgFgNDq8zUzVj5loF8V1zToACH_VHuvGX9KH2VzwXmLGCQTAPgLp0yP_f92757Vk2bw=w2560-h1440-rw" alt="Fast Food Wars artwork" loading="eager" />
+                    <span class="status status-demo">Demo</span>
+                    <figcaption><span class="poster-title">Fast Food Wars</span></figcaption>
+                </a>
+                <a class="poster" href="dome.html">
+                    <img src="https://play-lh.googleusercontent.com/Hs4qo_8n5eq3QGnIeWMQlFnIlZZpNxOPW6JekaBkRJ8gNXaFBoIoB8lEfd5Da6c6Tf27FTaLjCc8VZmk9-rM1A=w2560-h1440-rw" alt="Dome 3.0 artwork" loading="eager" />
+                    <span class="status status-live">Available</span>
+                    <figcaption><span class="poster-title">Dome 3.0</span></figcaption>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GAMES ===== -->
+    <section class="section" id="games">
         <div class="container">
-            <h2 class="section-title" style="text-align:center;">Our Games</h2>
-            <p class="section-sub" style="text-align:center;margin:0 auto 20px;">
-                Click any game to explore trailers, screenshots, and more.
-            </p>
+            <div class="section-head">
+                <span class="kicker">Games</span>
+                <h2 class="section-title">Our games</h2>
+                <p class="section-sub">Chaotic, calm, and confined. Worlds apart, all made the same way: with heart.</p>
+            </div>
 
-            <div class="showcase-grid">
+            <div class="games-grid">
 
-                <!-- FAST FOOD WARS -->
-                <a href="fast-food-wars.html" class="showcase-card">
-                    <img src="https://play-lh.googleusercontent.com/sE0UJAMuiENo0U4VsJIFgFgNDq8zUzVj5loF8V1zToACH_VHuvGX9KH2VzwXmLGCQTAPgLp0yP_f92757Vk2bw=w2560-h1440-rw" alt="Fast Food Wars" />
-                    <span class="badge orange">● Demo</span>
-                    <div class="overlay">
-                        <span class="game-tag">Bullet-hell · Rogue-lite</span>
-                        <h3>Fast Food Wars</h3>
-                        <span class="btn">View Game →</span>
+                <article class="game-card">
+                    <a class="game-art" href="dome.html" aria-label="Open Dome 3.0 page">
+                        <img src="https://play-lh.googleusercontent.com/Hs4qo_8n5eq3QGnIeWMQlFnIlZZpNxOPW6JekaBkRJ8gNXaFBoIoB8lEfd5Da6c6Tf27FTaLjCc8VZmk9-rM1A=w2560-h1440-rw" alt="Dome 3.0 artwork" loading="lazy" />
+                        <span class="status status-live">Available</span>
+                    </a>
+                    <div class="game-body">
+                        <div class="game-title-row">
+                            <h3>Dome 3.0</h3>
+                        </div>
+                        <div class="game-meta">
+                            <span class="chip">Bullet-hell · Roguelite</span>
+                        </div>
+                        <p>You are a lone ship trapped inside a dome. Endless waves of geometric enemies close in from every direction: dodge, dash, destroy, and survive the swarm.</p>
+                        <div class="game-footer">
+                            <a class="game-link-arrow" href="dome.html">View game <span class="arrow">→</span></a>
+                        </div>
                     </div>
-                </a>
+                </article>
 
-                <!-- BLACK BALLZ -->
-                <a href="black-ballz.html" class="showcase-card">
-                    <img src="https://play-lh.googleusercontent.com/OyClKWVtyPOiO0hYVfM76dNzbMozua8fFEUPiEg4Z4ZxYgqRnT93haM8tOFcZLT7q6cBgE1XhkwMc5qQPL3uqA=w526-h296-rw" alt="Black Ballz" />
-                    <span class="badge">● Available</span>
-                    <div class="overlay">
-                        <span class="game-tag">Platformer · Casual</span>
-                        <h3>Black Ballz</h3>
-                        <span class="btn">View Game →</span>
+                <article class="game-card">
+                    <a class="game-art" href="fast-food-wars.html" aria-label="Open Fast Food Wars page">
+                        <img src="https://play-lh.googleusercontent.com/sE0UJAMuiENo0U4VsJIFgFgNDq8zUzVj5loF8V1zToACH_VHuvGX9KH2VzwXmLGCQTAPgLp0yP_f92757Vk2bw=w2560-h1440-rw" alt="Fast Food Wars artwork" loading="lazy" />
+                        <span class="status status-demo">Demo</span>
+                    </a>
+                    <div class="game-body">
+                        <div class="game-title-row">
+                            <h3>Fast Food Wars</h3>
+                        </div>
+                        <div class="game-meta">
+                            <span class="chip">Bullet-hell · Rogue-lite</span>
+                        </div>
+                        <p>A burger fights back in a chaotic bullet-hell rogue-lite: dodge, dash, and take back every restaurant, one procedurally generated run at a time.</p>
+                        <div class="game-footer">
+                            <a class="game-link-arrow" href="fast-food-wars.html">View game <span class="arrow">→</span></a>
+                        </div>
                     </div>
-                </a>
+                </article>
+
+                <article class="game-card">
+                    <a class="game-art" href="black-ballz.html" aria-label="Open Black Ballz page">
+                        <img src="bb-icon.png" alt="Black Ballz artwork" loading="lazy" />
+                        <span class="status status-live">Available</span>
+                    </a>
+                    <div class="game-body">
+                        <div class="game-title-row">
+                            <h3>Black Ballz</h3>
+                        </div>
+                        <div class="game-meta">
+                            <span class="chip">Platformer · Casual</span>
+                        </div>
+                        <p>A minimal go-up platformer where your health is your jumps. Fight the bosses or ignore them. The mystery at the top is waiting.</p>
+                        <div class="game-footer">
+                            <a class="game-link-arrow" href="black-ballz.html">View game <span class="arrow">→</span></a>
+                        </div>
+                    </div>
+                </article>
 
             </div>
         </div>
     </section>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="footer">
-        <div class="container">
-            <div class="social-links">
-                <a href="https://x.com/nobledestus0" target="_blank">🐦 X (Twitter)</a>
-                <a href="https://www.youtube.com/@DSquareGames-f5x" target="_blank">▶️ YouTube</a>
-                <a href="https://discord.gg/82nvSSJtq" target="_blank">💬 Discord</a>
-                <a href="mailto:dsquaregames0@gmail.com">✉️ Email</a>
+    <!-- ===== STUDIO ===== -->
+    <section class="section studio-section" id="studio">
+        <div class="container studio-grid">
+            <div class="studio-copy">
+                <span class="kicker">The studio</span>
+                <h2 class="section-title">One tiny studio,<br />three very different worlds.</h2>
+                <p style="margin-top:18px;">
+                    1FPS Games is a small indie game studio making games we'd actually want to play. No publishers, no hype, no filler.
+                </p>
+                <p>
+                    So far that means a lone ship dodging geometric doom inside a dome, a chaotic
+                    bullet-hell about a burger taking back the restaurants, and a quiet, minimal
+                    climb to the top of the world. Three games, nothing alike. All polished until they shine.
+                </p>
             </div>
-            <p>&copy; 2026 <a href="index.html">1FPS Games</a> — built with caffeine and chaos.</p>
+
+            <ul class="social-list" aria-label="Find us online">
+                <li><a href="https://x.com/nobledestus0" target="_blank" rel="noopener">X (Twitter) <span class="dim">@nobledestus0</span> <span class="go">↗</span></a></li>
+                <li><a href="https://www.youtube.com/@DSquareGames-f5x" target="_blank" rel="noopener">YouTube <span class="dim">@DSquareGames-f5x</span> <span class="go">↗</span></a></li>
+                <li><a href="https://discord.gg/82nvSSJtq" target="_blank" rel="noopener">Discord <span class="dim">Community server</span> <span class="go">↗</span></a></li>
+                <li><a href="mailto:dsquaregames0@gmail.com">Email <span class="dim">dsquaregames0@gmail.com</span> <span class="go">↗</span></a></li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="site-footer">
+        <div class="footer-inner">
+            <p class="copy">© 2026 <a href="index.html">1FPS Games</a> · built with caffeine and chaos.</p>
+            <div class="footer-socials">
+                <a href="https://x.com/nobledestus0" target="_blank" rel="noopener">X</a>
+                <a href="https://www.youtube.com/@DSquareGames-f5x" target="_blank" rel="noopener">YouTube</a>
+                <a href="https://discord.gg/82nvSSJtq" target="_blank" rel="noopener">Discord</a>
+                <a href="mailto:dsquaregames0@gmail.com">Email</a>
+            </div>
         </div>
     </footer>
 
-    <script src="script.js"></script>
 </body>
 </html>
